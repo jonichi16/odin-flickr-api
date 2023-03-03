@@ -1,0 +1,21 @@
+<h1>Odin Flickr Photos</h1>
+
+<%= form_with url: :root, method: :get do |form| %>
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @photos %>
+  <% @photos.each do |photo| %>
+    <% id = photo.id %> 
+    <% secret = photo.secret %>
+    <% server = photo.server %>
+    <% url = "https://live.staticflickr.com/#{server}/#{id}_#{secret}.jpg" %>
+    <img src=<%= url %> alt="">
+  <% end %>
+<% end %>
+
